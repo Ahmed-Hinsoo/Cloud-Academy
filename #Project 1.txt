@@ -1,0 +1,115 @@
+#Step 1:
+
+Create a Linux VM instance with the approperate coniguration, and make sure that the HTTPs & HTTP traffic were both allowed
+
+------------------------------------------------------------------------------------
+
+#Step 2:
+
+Connect to the instance by click on the "ssh" button, until the CLI will be displayed
+
+------------------------------------------------------------------------------------
+
+#Step 3:
+
+Update the os packages to avoid any errors related to it's versions by using this command
+
+$sudo apt update
+$sudo apt upgrade
+
+------------------------------------------------------------------------------------
+
+#Step 4:
+
+Install Nginx web server by using this command
+
+$sudo apt install nginx -y
+
+------------------------------------------------------------------------------------
+
+#Step 5 (Optional):
+
+We can make verify that the web server was installed successfully ny using this command
+
+$sudo systemctl status ngnix
+
+------------------------------------------------------------------------------------
+
+#Step 6:
+
+If we want navigating to our main web html file we can use this command
+
+$cd /var/www/
+
+------------------------------------------------------------------------------------
+
+#Step 7:
+
+We can preview our target folder by using this command
+
+$ls
+
+------------------------------------------------------------------------------------
+
+#Step 8:
+
+Inside this folder we wil find the needed file
+
+$cd html/
+
+------------------------------------------------------------------------------------
+
+#Step 9:
+
+Then we can edit it and use our own code by replace the old one using this command
+
+$sudo nano index.html        #replace that with our desired code
+
+#or
+
+$nano index.nginx-debian.html
+
+------------------------------------------------------------------------------------
+
+#Step 10
+
+To use our own directory for pointing the web server UI, we must change some settings in the nginx core files
+
+To go into where the main html directory located we can use this command
+
+To make it pointing to our data direcory we must edit a specific file by using these commands
+
+$cd /etc/nginx/nginx.conf
+
+$sudo nano nginx.conf 
+
+#here we must change the root path to our desired directory
+
+------------------------------------------------------------------------------------
+
+#Step 11
+
+We can test our edited web server by using this command
+
+$sudo ngnix -t
+
+$sudo service nginx reload
+
+------------------------------------------------------------------------------------
+
+#Step 12
+
+To display images we could make a directory for them ex: /var/www/img, and after putting our images there
+
+We must configure our nginx.conf file to adapt it by editing using the following configuration:
+
+
+DocumentRoot /var/www/
+Alias /images "/var/www/img/"
+<Directory "/var/www/img">
+
+------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------
